@@ -1,0 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;700&display=swap');
+
+/* Seletor Universal * */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/* Variáveis CSS (:root e --nome-da-variavel) */
+:root {
+    --cor-neon: #00ff87;
+    --cor-neon-hover: #02d870;
+    --cor-fundo: #070913;
+    --cor-card: rgba(18, 24, 43, 0.75);
+    --cor-card-border: rgba(0, 255, 135, 0.2);
+    --cor-texto: #ffffff;
+    --cor-texto-mutado: #a0aec0;
+    --fonte-titulo: 'Orbitron', sans-serif;
+    --fonte-corpo: 'Rajdhani', sans-serif;
+    --border-radius: 14px;
+    --box-shadow-neon: 0 0 20px rgba(0, 255, 135, 0.3);
+}
+
+body {
+    font-family: var(--fonte-corpo);
+    font-size: 1.15rem;
+    background-color: var(--cor-fundo);
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(0, 255, 135, 0.12), transparent 50%),
+        linear-gradient(180deg, #070913 0%, #030408 100%);
+    background-attachment: fixed;
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: linear-gradient(180deg, rgba(17, 24, 39, 0.95) 0%, rgba(7, 9, 19, 0.85) 100%);
+    padding: 50px 20px 35px;
+    text-align: center;
+    border-bottom: 3px solid var(--cor-neon);
+    box-shadow: 0 5px 25px rgba(0, 255, 135, 0.15);
+}
+
+header h1 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(2.2rem, 5vw, 3.8rem); /* clamp() extra */
+    color: var(--cor-texto);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 12px rgba(0, 255, 135, 0.5);
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--cor-texto-mutado);
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 500;
+}
+
+/* Nav com Flexbox */
+nav {
+    background-color: rgba(7, 9, 19, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--cor-card-border);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 12px;
+    padding: 12px 20px;
+}
+
+nav a {
+    font-family: var(--fonte-titulo);
+    color: var(--cor-texto-mutado);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--cor-neon);
+    background: rgba(0, 255, 135, 0.1);
+    box-shadow: var(--box-shadow-neon);
+}
+
+/* Main e Banners */
+main {
+    max-width: 1200px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.banner-container {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.banner-container img {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--cor-neon);
+    box-shadow: var(--box-shadow-neon);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.banner-container img:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 35px rgba(0, 255, 135, 0.5);
+}
+
+/* Classes CSS e Seções com Pseudo-elemento ::before */
+.secao {
+    background: var(--cor-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--cor-card-border);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    margin-bottom: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.secao::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--cor-neon);
+    box-shadow: var(--box-shadow-neon);
+}
+
+.secao h2 {
+    font-family: var(--fonte-titulo);
+    color: var(--cor-neon);
+    font-size: 1.7rem;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Cards com Flexbox, Transform, Transition, Box-shadow e Hover */
+.cards-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.card {
+    background: rgba(10, 14, 28, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    flex: 1 1 calc(33.333% - 20px);
+    min-width: 270px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--cor-neon);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6), var(--box-shadow-neon);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 1.15rem;
+    color: var(--cor-texto);
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: var(--cor-texto-mutado);
+    font-size: 1rem;
+}
+
+.card.premiacao {
+    text-align: center;
+    border: 1px dashed var(--cor-neon);
+}
+
+.card.premiacao h3 {
+    color: var(--cor-neon);
+    font-size: 1.4rem;
+}
+
+/* Listas com marcador customizado */
+ul {
+    list-style: none;
+}
+
+ul li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    color: var(--cor-texto-mutado);
+}
+
+ul li::before {
+    content: '➢';
+    position: absolute;
+    left: 0;
+    color: var(--cor-neon);
+}
+
+/* Tabela com estilos e hover nas linhas */
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--cor-card-border);
+}
+
+.tabela th, .tabela td {
+    padding: 14px 18px;
+    text-align: left;
+}
+
+.tabela th {
+    font-family: var(--fonte-titulo);
+    background: rgba(0, 255, 135, 0.15);
+    color: var(--cor-neon);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--cor-neon);
+}
+
+.tabela td {
+    background-color: rgba(10, 14, 28, 0.6);
+    color: var(--cor-texto-mutado);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.tabela tr:hover td {
+    background-color: rgba(0, 255, 135, 0.08);
+    color: #fff;
+}
+
+/* Formulário com Seletor por ID #inscricao */
+#inscricao {
+    background: var(--cor-card);
+}
+
+.form-container p {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    font-family: var(--fonte-titulo);
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    color: var(--cor-neon);
+    text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(7, 9, 19, 0.8);
+    color: #fff;
+    font-family: var(--fonte-corpo);
+    font-size: 1.05rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--cor-neon);
+    box-shadow: var(--box-shadow-neon);
+}
+
+.botoes {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+button {
+    font-family: var(--fonte-titulo);
+    padding: 14px 25px;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    flex: 1;
+}
+
+button[type="submit"] {
+    background-color: var(--cor-neon);
+    color: #000;
+    font-weight: 800;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--cor-neon-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-neon);
+}
+
+button[type="reset"] {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--cor-texto-mutado);
+}
+
+button[type="reset"]:hover {
+    background-color: rgba(255, 0, 85, 0.2);
+    color: #fff;
+}
+
+/* Rodapé */
+footer {
+    background-color: rgba(7, 9, 19, 0.95);
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+    border-top: 1px solid var(--cor-card-border);
+}
+
+footer p {
+    color: var(--cor-texto-mutado);
+    font-size: 0.95rem;
+}
+
+footer a {
+    font-family: var(--fonte-titulo);
+    color: var(--cor-neon);
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: inline-block;
+    margin-top: 8px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--cor-neon-hover);
+    text-decoration: underline;
+}
